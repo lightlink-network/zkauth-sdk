@@ -1,0 +1,42 @@
+{
+  "name": "zkauth-sdk",
+  "version": "0.0.1",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve --mode development",
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "prepare": "npm run build",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "publish": "npm run build && npm publish"
+  },
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "rimraf": "^5.0.5",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.7.2",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  },
+  "author": "",
+  "description": "ZKAuth SDK for authentication using zero-knowledge proofs",
+  "keywords": [
+    "zkauth",
+    "authentication",
+    "zero-knowledge",
+    "sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/zkauth-sdk"
+  }
+}

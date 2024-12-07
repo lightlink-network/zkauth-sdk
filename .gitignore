@@ -1,0 +1,11 @@
+# node / javascript stuff
+node_modules
+dist
+
+# env
+.env
+
+# other
+repomix-output.txt
+repomix.config.json
+.repomixignore

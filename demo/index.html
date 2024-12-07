@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZKAuth SDK Demo</title>
+  <script src="../dist/zkauth.bundle.js"></script></head>
+<body>
+
+<div id="connected" style="display: none;">
+    <p>Connected as: <span id="user"></span></p>
+    <button onclick="disconnect()">Disconnect</button>
+    <button onclick="sendTx()">Send Demo Tx</button>
+
+    <pre id="tx"></pre>
+</div>
+
+<div id="disconnected" style="display: block;">
+    <button onclick="connect()">Connect</button>
+</div>
+
+
+<script>
+    const zkauth = new window.ZKAuth({
+        url: "http://localhost:8000",
+        title: "ZKAuth SDK Demo",
+    });
+
+    function connect() {
+        zkauth.reconnect().then(user => {
+            document.getElementById("user").innerText = user;
+            updateUI();
+        });
+    }
+
+    function disconnect() {
+        zkauth.disconnect();
+        updateUI();
+    }
+
+    function sendTx() {
+        zkauth.sendTx({
+            to: '0x0000000000000000000000000000000000000000',
+				amount: '1000000',
+            data: '0x',
+            network: 'll_pegasus',
+        }).then(tx => {
+            console.log(tx);
+            document.getElementById("tx").innerText = JSON.stringify(tx, null, 2);
+        });
+    }
+
+    function updateUI() {
+        const user = zkauth.currentUser();
+        if (user) {
+            document.getElementById("connected").style.display = "block";
+            document.getElementById("disconnected").style.display = "none";
+            document.getElementById("user").innerText = user;
+        } else {
+            document.getElementById("connected").style.display = "none";
+            document.getElementById("disconnected").style.display = "block";
+        }
+    }
+
+    updateUI();
+</script>
