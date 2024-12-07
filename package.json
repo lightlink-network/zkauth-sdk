@@ -1,9 +1,8 @@
 {
-  "name": "zkauth-sdk",
-  "version": "0.0.1",
+  "name": "@cryptokass/zkauth-sdk",
+  "version": "0.0.2",
   "license": "MIT",
   "private": false,
-  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -12,8 +11,7 @@
     "clean": "rimraf dist",
     "prebuild": "npm run clean",
     "prepare": "npm run build",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "publish": "npm run build && npm publish"
+    "format": "prettier --write \"src/**/*.ts\""
   },
   "files": [
     "dist"
