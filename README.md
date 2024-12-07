@@ -64,3 +64,25 @@ const isConnected = zkauth.connected();
 ```typescript
 const walletAddress = zkauth.currentUser();
 ```
+
+# How the ZKAuth SDK works
+
+The SDK interacts with the ZKAuth gateway, which prompts users to login with their provider of choice, produces required ZK proofs, and creates/retrieves a users ZKAuth smart contract wallet, on all supported networks.
+
+The SDK requires popup windows to be enabled for the domain of the DApp,
+as it communicates with the gateway via the PostMessage API.
+
+## The typical login flow looks like this:
+
+![ZKAuth DApp Flow](./zkauth-dapp-flow.png)
+
+1. The user clicks the connect button, which calls `zkauth.connect()`.
+2. The SDK opens a popup prompting the user to select their login method. The gateway also creates/loads a local ephemeral key for temporary use with the smart wallet. It forwards the user to the OUAuth login page.
+3. The Gateway receives the users OAuth JWT from the trusted provider for processing.
+4. The Gateway infers the users smart wallet address from the JWT and returns it instantly to the SDK for display/use.
+
+#### Background Tasks
+
+5. The Gateway service triggers the wallet setup, if the smart wallet does not exist or the ephemeral key is not registered. The background service manages this setup, handling any failures and retries.
+6. The background runner service forwards the request to a high-performance, secure zk-SNARK proving system which generates proofs for our Zero Knowledge Proof Circuits.
+7. With the proofs generated, the background service creates the smart wallet on the desired network, and registers the ephemeral key.
