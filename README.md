@@ -5,11 +5,11 @@ ZKAuth is a zero-knowledge proof-based crypto wallet, controlled by your google,
 ## Usage
 
 ```bash
-npm install zkauth-sdk
+npm install @cryptokass/zkauth-sdk
 ```
 
 ```typescript
-import { ZKAuth } from "zkauth-sdk";
+import { ZKAuth } from "@cryptokass/zkauth-sdk";
 
 const zkauth = new ZKAuth({
   name: "My Awesome App",
