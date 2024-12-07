@@ -86,3 +86,9 @@ as it communicates with the gateway via the PostMessage API.
 5. The Gateway service triggers the wallet setup, if the smart wallet does not exist or the ephemeral key is not registered. The background service manages this setup, handling any failures and retries.
 6. The background runner service forwards the request to a high-performance, secure zk-SNARK proving system which generates proofs for our Zero Knowledge Proof Circuits.
 7. With the proofs generated, the background service creates the smart wallet on the desired network, and registers the ephemeral key.
+
+## TODO:
+
+- ✅ ZK Auth Login with Google – Basic implementation.
+- ❌ Viem Bindings – We need to create a wrapper that works with viem.
+- ❌ Ethers Bindings – We need to create a wrapper that works with ethers.
