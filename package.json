@@ -1,9 +1,9 @@
 {
   "name": "@cryptokass/zkauth-sdk",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "private": false,
-  "main": "dist/index.js",
+  "main": "dist/zkauth.bundle.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "webpack --mode production",
