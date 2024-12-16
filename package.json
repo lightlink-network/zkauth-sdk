@@ -1,6 +1,6 @@
 {
   "name": "@cryptokass/zkauth-sdk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "private": false,
   "main": "dist/zkauth.bundle.js",

@@ -150,6 +150,7 @@ export class ZKAuth {
     );
 
     return new Promise((resolve, reject) => {
+      let done = false;
       if (!popup) {
         reject(new Error("Failed to open popup"));
         return;
@@ -164,8 +165,18 @@ export class ZKAuth {
 
         // Remove the listener
         window.removeEventListener("message", listener);
+        done = true;
         popup?.close();
       };
+
+      // check if popup is closed
+      const interval = setInterval(() => {
+        if (popup?.closed) {
+          clearInterval(interval);
+
+          if (!done) reject(new Error("Popup closed"));
+        }
+      }, 100);
 
       window.addEventListener("message", listener);
     });
